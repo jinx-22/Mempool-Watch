@@ -1,0 +1,7 @@
+{
+  "name": "Mempool Watch",
+  "render_readme": true,
+  "hide_default_branch": false,
+  "homeassistant": "2025.6.0",
+  "hacs": "2.0.5"
+}
