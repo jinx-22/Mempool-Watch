@@ -206,6 +206,8 @@ The card can display:
 - Number of unconfirmed transactions
 - Bitcoin address
 
+<img width="485" height="310" alt="btc-address-card" src="https://github.com/user-attachments/assets/ff4caa01-b19b-418c-9c71-8f789c671f44" />
+
 The card is **completely optional** and is not required for the Mempool Watch integration.
 
 ### Repository
