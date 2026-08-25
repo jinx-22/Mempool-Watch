@@ -1,0 +1,124 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mempool Watch",
+        "description": "Verbindung zu einer Mempool-Instanz (lokal oder öffentlich).",
+        "data": {
+          "base_url": "Instanz-URL",
+          "update_interval": "Aktualisierungsintervall (Sekunden)",
+          "secondary_currency": "Zweite BTC-Preiswährung"
+        },
+        "data_description": {
+          "base_url": "URL der Mempool-Instanz, z. B. http://192.168.1.1:8999 oder https://mempool.space",
+          "update_interval": "Wie oft abgefragt wird (5–600 s). Standard: 60 s.",
+          "secondary_currency": "Optionaler zusätzlicher BTC-Preissensor. „Keine“ = kein Extra-Sensor."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur Mempool-Instanz fehlgeschlagen.",
+      "invalid_url": "Ungültige URL. Muss mit http:// oder https:// beginnen und einen Hostnamen enthalten.",
+      "unknown": "Unerwarteter Fehler."
+    },
+    "abort": {
+      "already_configured": "Diese Mempool-Instanz ist bereits konfiguriert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mempool Optionen",
+        "menu_options": {
+          "settings": "Einstellungen",
+          "add_address": "BTC-Adresse hinzufügen",
+          "remove_address": "BTC-Adresse entfernen"
+        },
+        "menu_option_descriptions": {
+          "settings": "URL, Intervall, Währung"
+        }
+      },
+      "settings": {
+        "title": "Einstellungen",
+        "description": "URL, Abfrageintervall oder zweite Währung ändern.",
+        "data": {
+          "base_url": "Instanz-URL",
+          "update_interval": "Aktualisierungsintervall (Sekunden)",
+          "secondary_currency": "Zweite BTC-Preiswährung"
+        },
+        "data_description": {
+          "base_url": "URL der Mempool-Instanz (lokal oder öffentlich).",
+          "update_interval": "Wie oft abgefragt wird (5–600 s).",
+          "secondary_currency": "Optionaler zusätzlicher BTC-Preissensor. „Keine“ = kein Extra-Sensor."
+        }
+      },
+      "add_address": {
+        "title": "BTC-Adresse hinzufügen",
+        "description": "Erzeugt einen Sensor mit dem BTC-Saldo dieser Adresse.",
+        "data": {
+          "name": "Name",
+          "address": "Bitcoin-Adresse"
+        },
+        "data_description": {
+          "name": "Anzeigename der Entität (z. B. Sparbuch, Cold Wallet).",
+          "address": "Zu überwachende bc1… / 1… / 3…-Adresse."
+        }
+      },
+      "remove_address": {
+        "title": "BTC-Adresse entfernen",
+        "description": "Adresse wählen, die entfernt werden soll.",
+        "data": {
+          "address": "Adresse"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zur Mempool-Instanz fehlgeschlagen.",
+      "invalid_url": "Ungültige URL. Muss mit http:// oder https:// beginnen und einen Hostnamen enthalten.",
+      "invalid_name": "Bitte einen Namen eingeben.",
+      "invalid_address": "Ungültige oder nicht erreichbare Bitcoin-Adresse.",
+      "address_exists": "Diese Adresse ist bereits konfiguriert.",
+      "unknown": "Unerwarteter Fehler."
+    },
+    "abort": {
+      "no_addresses": "Noch keine Adressen konfiguriert."
+    }
+  },
+  "selector": {
+    "secondary_currency": {
+      "options": {
+        "none": "Keine",
+        "EUR": "EUR",
+        "GBP": "GBP",
+        "CAD": "CAD",
+        "CHF": "CHF",
+        "AUD": "AUD",
+        "JPY": "JPY",
+        "CNY": "CNY",
+        "INR": "INR",
+        "BRL": "BRL",
+        "KRW": "KRW",
+        "TRY": "TRY",
+        "PLN": "PLN",
+        "SEK": "SEK",
+        "NOK": "NOK",
+        "DKK": "DKK",
+        "CZK": "CZK",
+        "HUF": "HUF",
+        "ILS": "ILS",
+        "MXN": "MXN",
+        "SGD": "SGD",
+        "HKD": "HKD",
+        "NZD": "NZD",
+        "ZAR": "ZAR",
+        "RUB": "RUB",
+        "THB": "THB",
+        "TWD": "TWD",
+        "PHP": "PHP",
+        "IDR": "IDR",
+        "MYR": "MYR",
+        "VND": "VND"
+      }
+    }
+  }
+}
