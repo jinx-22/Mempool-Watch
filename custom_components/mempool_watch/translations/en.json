@@ -1,0 +1,124 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mempool Watch",
+        "description": "Connect to a mempool instance (local or public).",
+        "data": {
+          "base_url": "Instance URL",
+          "update_interval": "Update interval (seconds)",
+          "secondary_currency": "Secondary BTC price currency"
+        },
+        "data_description": {
+          "base_url": "URL of the mempool instance, e.g. http://192.168.1.1:8999 or https://mempool.space",
+          "update_interval": "How often to poll (5–600 s). Default 60 s.",
+          "secondary_currency": "Optional extra BTC price sensor. Choose None to skip."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the mempool instance.",
+      "invalid_url": "Invalid URL. Must start with http:// or https:// and contain a hostname.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This mempool instance is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mempool Watch options",
+        "menu_options": {
+          "settings": "Settings",
+          "add_address": "Add BTC address",
+          "remove_address": "Remove BTC address"
+        },
+        "menu_option_descriptions": {
+          "settings": "URL, interval, currency"
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Change URL, polling interval or secondary currency.",
+        "data": {
+          "base_url": "Instance URL",
+          "update_interval": "Update interval (seconds)",
+          "secondary_currency": "Secondary BTC price currency"
+        },
+        "data_description": {
+          "base_url": "URL of the mempool instance (local or public).",
+          "update_interval": "How often to poll (5–600 s).",
+          "secondary_currency": "Optional extra BTC price sensor. Choose None to skip."
+        }
+      },
+      "add_address": {
+        "title": "Add BTC address",
+        "description": "Create a sensor that shows the BTC balance of this address.",
+        "data": {
+          "name": "Name",
+          "address": "Bitcoin address"
+        },
+        "data_description": {
+          "name": "Display name for the entity (e.g. Savings, Cold wallet).",
+          "address": "bc1… / 1… / 3… address to monitor."
+        }
+      },
+      "remove_address": {
+        "title": "Remove BTC address",
+        "description": "Select an address sensor to remove.",
+        "data": {
+          "address": "Address"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the mempool instance.",
+      "invalid_url": "Invalid URL. Must start with http:// or https:// and contain a hostname.",
+      "invalid_name": "Please enter a name.",
+      "invalid_address": "Invalid or unreachable Bitcoin address.",
+      "address_exists": "This address is already configured.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "no_addresses": "No addresses configured yet."
+    }
+  },
+  "selector": {
+    "secondary_currency": {
+      "options": {
+        "none": "None",
+        "EUR": "EUR",
+        "GBP": "GBP",
+        "CAD": "CAD",
+        "CHF": "CHF",
+        "AUD": "AUD",
+        "JPY": "JPY",
+        "CNY": "CNY",
+        "INR": "INR",
+        "BRL": "BRL",
+        "KRW": "KRW",
+        "TRY": "TRY",
+        "PLN": "PLN",
+        "SEK": "SEK",
+        "NOK": "NOK",
+        "DKK": "DKK",
+        "CZK": "CZK",
+        "HUF": "HUF",
+        "ILS": "ILS",
+        "MXN": "MXN",
+        "SGD": "SGD",
+        "HKD": "HKD",
+        "NZD": "NZD",
+        "ZAR": "ZAR",
+        "RUB": "RUB",
+        "THB": "THB",
+        "TWD": "TWD",
+        "PHP": "PHP",
+        "IDR": "IDR",
+        "MYR": "MYR",
+        "VND": "VND"
+      }
+    }
+  }
+}
