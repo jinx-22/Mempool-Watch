@@ -10,7 +10,7 @@
           "secondary_currency": "Zweite BTC-Preiswährung"
         },
         "data_description": {
-          "base_url": "URL der Mempool-Instanz, z. B. http://192.168.1.1:8999 oder https://mempool.space",
+          "base_url": "URL+PORT der Mempool-Instanz",
           "update_interval": "Wie oft abgefragt wird (5–600 s). Standard: 60 s.",
           "secondary_currency": "Optionaler zusätzlicher BTC-Preissensor. „Keine“ = kein Extra-Sensor."
         }
