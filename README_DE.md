@@ -205,6 +205,9 @@ Die Card kann unter anderem anzeigen:
 - Anzahl unbestätigter Transaktionen
 - Bitcoin-Adresse
 
+<img width="485" height="310" alt="btc-address-card" src="https://github.com/user-attachments/assets/ff4caa01-b19b-418c-9c71-8f789c671f44" />
+
+
 Die Card ist **vollständig optional** und für die Mempool-Watch-Integration nicht erforderlich.
 
 ### Repository
