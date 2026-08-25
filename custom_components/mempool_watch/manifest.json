@@ -5,8 +5,8 @@
   "config_flow": true,
   "dependencies": [],
   "documentation": "https://github.com/jinx-22/ha-mempool_watch",
-  "issue_tracker": "https://github.com/jinx-22/ha-mempool_watch/issues",
   "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/jinx-22/ha-mempool_watch/issues",
   "requirements": [],
   "version": "0.4.3"
 }
