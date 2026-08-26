@@ -321,7 +321,7 @@ Every contribution helps support further development 🚀
 <code>usefulplay52@walletofsatoshi.com</code>
 <br>
 
-<img alt="Self_Wallet of Satoshi" src="https://github.com/user-attachments/assets/65cc18d9-05d1-4a00-8ccc-9922fdb54baf" />
+<img width="320" alt="Self_Wallet of Satoshi" src="https://github.com/user-attachments/assets/65cc18d9-05d1-4a00-8ccc-9922fdb54baf" />
 <br><br>
 or:
 <br><br></p>
@@ -335,7 +335,7 @@ or:
 <code>bc1qkz7mtp23cmshxnru96lzgeayu0urlysvqk5vry</code>
 <br>
 
-<img height="500" alt="Donations_240px" src="https://github.com/user-attachments/assets/196f68e4-b0e8-4f27-bded-8c4fe13b9d45" />
+<img alt="Donations_240px" src="https://github.com/user-attachments/assets/196f68e4-b0e8-4f27-bded-8c4fe13b9d45" />
 <br><br>
 </div>
 
