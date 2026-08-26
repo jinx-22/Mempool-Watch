@@ -13,7 +13,7 @@
 [![Donate Bitcoin](https://img.shields.io/badge/₿-Bitcoin-F7931A?style=flat-square)](#bitcoin)
 [![Donate Lightning](https://img.shields.io/badge/⚡-Lightning-FFD700?style=flat-square)](#lightning)
 
-🇬🇧 **[English Description](README.md)**
+🇬🇧 [English](README.md) · 🇩🇪 **Deutsch**
 
 ---
 
