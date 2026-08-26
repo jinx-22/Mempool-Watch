@@ -341,7 +341,7 @@ or:
 
 Thank you very much for your support!
 
-And please leave a free ⭐ on GitHub so others can discover the project too.
+And please leave a free ⭐ [![GitHub stars](https://img.shields.io/github/stars/jinx-22/mempool_watch?style=social)](https://github.com/jinx-22/mempool_watch/stargazers) on GitHub so others can discover the project too.
 
 ---
 
