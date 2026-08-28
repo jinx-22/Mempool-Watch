@@ -6,12 +6,15 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .api import MempoolApiClient
+from .api import MempoolApiClient, async_build_ssl
 from .const import (
     CONF_ADDRESSES,
     CONF_BASE_URL,
+    CONF_CA_CERT,
     CONF_UPDATE_INTERVAL,
+    CONF_VERIFY_SSL,
     DEFAULT_UPDATE_INTERVAL,
+    DEFAULT_VERIFY_SSL,
 )
 from .coordinator import MempoolDataUpdateCoordinator
 from .data import MempoolConfigEntry, MempoolData
@@ -24,7 +27,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: MempoolConfigEntry) -> b
     conf = {**entry.data, **entry.options}
 
     session = async_get_clientsession(hass)
-    client = MempoolApiClient(conf[CONF_BASE_URL], session)
+    ssl_arg = await async_build_ssl(
+        hass,
+        conf.get(CONF_VERIFY_SSL, DEFAULT_VERIFY_SSL),
+        conf.get(CONF_CA_CERT) or None,
+    )
+    client = MempoolApiClient(conf[CONF_BASE_URL], session, ssl=ssl_arg)
 
     update_interval = conf.get(CONF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL)
     addresses = conf.get(CONF_ADDRESSES, []) or []
