@@ -11,9 +11,9 @@
           "ca_cert": "Custom CA certificate (optional)"
         },
         "data_description": {
-          "base_url": "URL+PORT of the mempool instance (e.g. https://mempool.your-server.local)",
+          "base_url": "URL and port of the mempool instance (local or public)",
           "update_interval": "How often to poll (5–600 s). Default 60 s.",
-          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances (e.g. mempool.space).",
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances.",
           "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
@@ -68,7 +68,7 @@
         "data_description": {
           "base_url": "URL of the mempool instance (local or public).",
           "update_interval": "How often to poll (5–600 s).",
-          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances (e.g. mempool.space).",
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances.",
           "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
