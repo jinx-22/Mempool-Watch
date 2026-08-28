@@ -7,18 +7,32 @@
         "data": {
           "base_url": "Instance URL",
           "update_interval": "Update interval (seconds)",
-          "secondary_currency": "Secondary BTC price currency"
+          "verify_ssl": "Verify SSL certificate",
+          "ca_cert": "Custom CA certificate (optional)"
         },
         "data_description": {
-          "base_url": "URL+PORT of the mempool instance",
+          "base_url": "URL+PORT of the mempool instance (e.g. https://mempool.your-server.local)",
           "update_interval": "How often to poll (5–600 s). Default 60 s.",
-          "secondary_currency": "Optional extra BTC price sensor. Choose None to skip."
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances (e.g. mempool.space).",
+          "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
+        }
+      },
+      "currencies": {
+        "title": "Currencies",
+        "description": "Select the fiat currencies for which BTC price sensors should be created.",
+        "data": {
+          "currencies": "Currencies"
+        },
+        "data_description": {
+          "currencies": "Select one or more currencies."
         }
       }
     },
     "error": {
       "cannot_connect": "Failed to connect to the mempool instance.",
       "invalid_url": "Invalid URL. Must start with http:// or https:// and contain a hostname.",
+      "invalid_ca_cert": "Invalid CA certificate. Paste the full PEM content (including BEGIN/END lines).",
+      "no_currency_selected": "Please select at least one currency.",
       "unknown": "Unexpected error."
     },
     "abort": {
@@ -31,25 +45,41 @@
         "title": "Mempool Watch options",
         "menu_options": {
           "settings": "Settings",
+          "currencies": "Currencies",
           "add_address": "Add BTC address",
           "remove_address": "Remove BTC address"
         },
         "menu_option_descriptions": {
-          "settings": "URL, interval, currency"
+          "settings": "URL, interval, SSL and CA certificate",
+          "currencies": "Select BTC price currencies",
+          "add_address": "Add a Bitcoin address to monitor",
+          "remove_address": "Remove a monitored Bitcoin address"
         }
       },
       "settings": {
         "title": "Settings",
-        "description": "Change URL, polling interval or secondary currency.",
+        "description": "Change URL, polling interval or SSL settings.",
         "data": {
           "base_url": "Instance URL",
           "update_interval": "Update interval (seconds)",
-          "secondary_currency": "Secondary BTC price currency"
+          "verify_ssl": "Verify SSL certificate",
+          "ca_cert": "Custom CA certificate (optional)"
         },
         "data_description": {
           "base_url": "URL of the mempool instance (local or public).",
           "update_interval": "How often to poll (5–600 s).",
-          "secondary_currency": "Optional extra BTC price sensor. Choose None to skip."
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances (e.g. mempool.space).",
+          "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
+        }
+      },
+      "currencies": {
+        "title": "Currencies",
+        "description": "Select the fiat currencies for which BTC price sensors should be created.",
+        "data": {
+          "currencies": "Currencies"
+        },
+        "data_description": {
+          "currencies": "Select one or more currencies."
         }
       },
       "add_address": {
@@ -75,9 +105,11 @@
     "error": {
       "cannot_connect": "Failed to connect to the mempool instance.",
       "invalid_url": "Invalid URL. Must start with http:// or https:// and contain a hostname.",
+      "invalid_ca_cert": "Invalid CA certificate. Paste the full PEM content (including BEGIN/END lines).",
       "invalid_name": "Please enter a name.",
       "invalid_address": "Invalid or unreachable Bitcoin address.",
       "address_exists": "This address is already configured.",
+      "no_currency_selected": "Please select at least one currency.",
       "unknown": "Unexpected error."
     },
     "abort": {
@@ -85,9 +117,8 @@
     }
   },
   "selector": {
-    "secondary_currency": {
+    "currencies": {
       "options": {
-        "none": "None",
         "eur": "EUR",
         "gbp": "GBP",
         "cad": "CAD",
