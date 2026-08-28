@@ -1,5 +1,3 @@
-"""Base entity for the Mempool Watch integration."""
-
 from __future__ import annotations
 
 from homeassistant.helpers.device_registry import DeviceEntryType, DeviceInfo
