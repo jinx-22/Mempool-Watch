@@ -1,5 +1,3 @@
-"""DataUpdateCoordinator for the Mempool Watch integration."""
-
 from __future__ import annotations
 
 import asyncio
