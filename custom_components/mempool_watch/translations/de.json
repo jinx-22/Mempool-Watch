@@ -7,18 +7,32 @@
         "data": {
           "base_url": "Instanz-URL",
           "update_interval": "Aktualisierungsintervall (Sekunden)",
-          "secondary_currency": "Zweite BTC-Preiswährung"
+          "verify_ssl": "SSL-Zertifikat prüfen",
+          "ca_cert": "Eigenes CA-Zertifikat (optional)"
         },
         "data_description": {
-          "base_url": "URL+PORT der Mempool-Instanz",
+          "base_url": "URL+PORT der Mempool-Instanz (z. B. https://mempool.dein-server.local)",
           "update_interval": "Wie oft abgefragt wird (5–600 s). Standard: 60 s.",
-          "secondary_currency": "Optionaler zusätzlicher BTC-Preissensor. „Keine“ = kein Extra-Sensor."
+          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen (z. B. mempool.space) leer lassen.",
+          "ca_cert": "Vollständiger PEM-Text inkl. -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
+        }
+      },
+      "currencies": {
+        "title": "Währungen",
+        "description": "Wähle die Fiat-Währungen aus, für die BTC-Preissensoren erstellt werden sollen.",
+        "data": {
+          "currencies": "Währungen"
+        },
+        "data_description": {
+          "currencies": "Wähle eine oder mehrere Währungen aus."
         }
       }
     },
     "error": {
       "cannot_connect": "Verbindung zur Mempool-Instanz fehlgeschlagen.",
       "invalid_url": "Ungültige URL. Muss mit http:// oder https:// beginnen und einen Hostnamen enthalten.",
+      "invalid_ca_cert": "Ungültiges CA-Zertifikat. Bitte den vollständigen PEM-Inhalt einfügen (inkl. BEGIN/END-Zeilen).",
+      "no_currency_selected": "Bitte mindestens eine Währung auswählen.",
       "unknown": "Unerwarteter Fehler."
     },
     "abort": {
@@ -31,25 +45,41 @@
         "title": "Mempool Optionen",
         "menu_options": {
           "settings": "Einstellungen",
+          "currencies": "Währungen",
           "add_address": "BTC-Adresse hinzufügen",
           "remove_address": "BTC-Adresse entfernen"
         },
         "menu_option_descriptions": {
-          "settings": "URL, Intervall, Währung"
+          "settings": "URL, Intervall, SSL und CA-Zertifikat",
+          "currencies": "BTC-Preiswährungen auswählen",
+          "add_address": "Bitcoin-Adresse zur Überwachung hinzufügen",
+          "remove_address": "Überwachte Bitcoin-Adresse entfernen"
         }
       },
       "settings": {
         "title": "Einstellungen",
-        "description": "URL, Abfrageintervall oder zweite Währung ändern.",
+        "description": "URL, Intervall oder SSL-Einstellungen ändern.",
         "data": {
           "base_url": "Instanz-URL",
           "update_interval": "Aktualisierungsintervall (Sekunden)",
-          "secondary_currency": "Zweite BTC-Preiswährung"
+          "verify_ssl": "SSL-Zertifikat prüfen",
+          "ca_cert": "Eigenes CA-Zertifikat (optional)"
         },
         "data_description": {
           "base_url": "URL der Mempool-Instanz (lokal oder öffentlich).",
           "update_interval": "Wie oft abgefragt wird (5–600 s).",
-          "secondary_currency": "Optionaler zusätzlicher BTC-Preissensor. „Keine“ = kein Extra-Sensor."
+          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen (z. B. mempool.space) leer lassen.",
+          "ca_cert": "Vollständiger PEM-Text inkl. -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
+        }
+      },
+      "currencies": {
+        "title": "Währungen",
+        "description": "Wähle die Fiat-Währungen aus, für die BTC-Preissensoren erstellt werden sollen.",
+        "data": {
+          "currencies": "Währungen"
+        },
+        "data_description": {
+          "currencies": "Wähle eine oder mehrere Währungen aus."
         }
       },
       "add_address": {
@@ -75,9 +105,11 @@
     "error": {
       "cannot_connect": "Verbindung zur Mempool-Instanz fehlgeschlagen.",
       "invalid_url": "Ungültige URL. Muss mit http:// oder https:// beginnen und einen Hostnamen enthalten.",
+      "invalid_ca_cert": "Ungültiges CA-Zertifikat. Bitte den vollständigen PEM-Inhalt einfügen (inkl. BEGIN/END-Zeilen).",
       "invalid_name": "Bitte einen Namen eingeben.",
       "invalid_address": "Ungültige oder nicht erreichbare Bitcoin-Adresse.",
       "address_exists": "Diese Adresse ist bereits konfiguriert.",
+      "no_currency_selected": "Bitte mindestens eine Währung auswählen.",
       "unknown": "Unerwarteter Fehler."
     },
     "abort": {
@@ -85,9 +117,8 @@
     }
   },
   "selector": {
-    "secondary_currency": {
+    "currencies": {
       "options": {
-        "none": "Keine",
         "eur": "EUR",
         "gbp": "GBP",
         "cad": "CAD",
