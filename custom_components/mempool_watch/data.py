@@ -1,5 +1,3 @@
-"""Typed runtime data for the Mempool Watch integration."""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
