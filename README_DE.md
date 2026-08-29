@@ -16,7 +16,7 @@ Home Assistant Integration
 
 🇬🇧 [English](README.md) · 🇩🇪 **Deutsch**
 
-**Aktuelle Version: 0.5.0**
+**Aktuelle Version: 0.5.9**
 
 ---
 
@@ -32,7 +32,7 @@ Home Assistant Integration
 - **Mehrere BTC-Preis-Entitäten** (Mehrfachauswahl Fiat-Währungen)
 - **Unbegrenzte Bitcoin-Adressen** (bestätigt + pending)
 - **SSL / eigenes CA-Zertifikat** (Umbrel, Start9, …)
-- Optionale [btc-address-card](https://github.com/jinx-22/btc-address-card) Lovelace-Card
+- [btc-address-card](https://github.com/jinx-22/btc-address-card) Lovelace-Card inklusive! Kein extra Download/Installation nötig!
 
 ---
 
@@ -108,14 +108,16 @@ Beliebig viele Adressen hinzufügen. Jede wird zur eigenen Entität mit:
 
 ---
 
-# 🖼️ Optionale Address Card
+# 🖼️ Lovelace BTC Address Card
 
-Dedizierte Lovelace-Card für Adress-Sensoren:  
+Lovelace-Card für BTC-Address-Sensoren in der Kartenauswahl:
+
+INFO hier:
 **[btc-address-card](https://github.com/jinx-22/btc-address-card)**
 
-<img width="485" height="310" alt="btc-address-card" src="https://github.com/user-attachments/assets/ff4caa01-b19b-418c-9c71-8f789c671f44" />
+## Karte muss nicht extra installiert werden da schon in Mempool Watch enthalten!
 
-Vollständig optional — für die Integration nicht erforderlich.
+<img width="485" height="310" alt="btc-address-card" src="https://github.com/user-attachments/assets/ff4caa01-b19b-418c-9c71-8f789c671f44" />
 
 ---
 
@@ -170,7 +172,7 @@ Bitte angeben: Home-Assistant-Version, Mempool-Watch-Version, Logs, Schritte zur
 <img alt="Donations_240px" src="https://github.com/user-attachments/assets/196f68e4-b0e8-4f27-bded-8c4fe13b9d45" />
 </div>
 
-Danke für deine Unterstützung — ein kostenloser ⭐ hilft anderen, das Projekt zu finden:  
+Danke für deine Unterstützung — ein kostenloses ⭐ hilft anderen, das Projekt zu finden:  
 [![GitHub stars](https://img.shields.io/github/stars/jinx-22/mempool_watch?style=social)](https://github.com/jinx-22/mempool_watch/stargazers)
 
 ---
