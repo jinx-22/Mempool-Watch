@@ -6,7 +6,6 @@ from typing import Any
 from urllib.parse import urlparse
 
 import voluptuous as vol
-
 from homeassistant.config_entries import (
     ConfigEntry,
     ConfigFlow,
@@ -55,7 +54,6 @@ def _settings_schema(
 ) -> vol.Schema:
     """Return the general settings schema."""
     d = defaults or {}
-
     return vol.Schema(
         {
             vol.Required(
@@ -114,6 +112,7 @@ def _available_currencies_from_prices(
             continue
         if code not in available:
             available.append(code)
+
     # Prefer stable order: known choices first, then extras
     ordered = [c for c in CURRENCY_CHOICES if c in available]
     for c in available:
@@ -145,6 +144,7 @@ def _normalize_currencies(
         return []
 
     allowed = set(available) if available is not None else set(CURRENCY_CHOICES)
+
     # Always accept known choices even if available list is partial
     allowed |= set(CURRENCY_CHOICES)
 
@@ -155,6 +155,7 @@ def _normalize_currencies(
             if available is not None and value not in available:
                 continue
             normalized.append(value)
+
     return normalized
 
 
@@ -168,8 +169,8 @@ def _currency_schema(
         defaults if defaults is not None else DEFAULT_CURRENCIES,
         available=codes,
     )
-    # Empty selection is valid (USD-only)
 
+    # Empty selection is valid (USD-only)
     return vol.Schema(
         {
             vol.Required(
@@ -197,9 +198,15 @@ def _remove_currency_entities(
         return
 
     registry = er.async_get(hass)
+
     for currency in currencies:
         unique_id = f"{config_entry.entry_id}_price_{currency.lower()}"
-        entity_id = registry.async_get_entity_id("sensor", DOMAIN, unique_id)
+        entity_id = registry.async_get_entity_id(
+            "sensor",
+            DOMAIN,
+            unique_id,
+        )
+
         if entity_id is not None:
             LOGGER.debug(
                 "Removing deselected currency entity: %s (unique_id=%s)",
@@ -207,6 +214,30 @@ def _remove_currency_entities(
                 unique_id,
             )
             registry.async_remove(entity_id)
+
+
+def _remove_address_entity(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    address: str,
+) -> None:
+    """Remove the entity registry entry for a removed BTC address."""
+    registry = er.async_get(hass)
+    unique_id = f"{config_entry.entry_id}_addr_{address}"
+
+    entity_id = registry.async_get_entity_id(
+        "sensor",
+        DOMAIN,
+        unique_id,
+    )
+
+    if entity_id is not None:
+        LOGGER.debug(
+            "Removing deleted BTC address entity: %s (unique_id=%s)",
+            entity_id,
+            unique_id,
+        )
+        registry.async_remove(entity_id)
 
 
 async def _async_client_from_input(
@@ -217,8 +248,16 @@ async def _async_client_from_input(
 ) -> MempoolApiClient:
     """Create API client from form values (SSL built off the event loop)."""
     session = async_get_clientsession(hass)
-    ssl_arg = await async_build_ssl(hass, verify_ssl, ca_cert or None)
-    return MempoolApiClient(base_url, session, ssl=ssl_arg)
+    ssl_arg = await async_build_ssl(
+        hass,
+        verify_ssl,
+        ca_cert or None,
+    )
+    return MempoolApiClient(
+        base_url,
+        session,
+        ssl=ssl_arg,
+    )
 
 
 async def _async_fetch_available_currencies(
@@ -228,15 +267,21 @@ async def _async_fetch_available_currencies(
     try:
         price_data = await client.async_get_prices()
     except MempoolApiError as err:
-        LOGGER.warning("Could not fetch prices for currency list: %s", err)
+        LOGGER.warning(
+            "Could not fetch prices for currency list: %s",
+            err,
+        )
         return list(CURRENCY_CHOICES)
 
     available = _available_currencies_from_prices(price_data)
+
     if not available:
         LOGGER.warning(
-            "Price endpoint returned no usable currencies, falling back to full list"
+            "Price endpoint returned no usable currencies, "
+            "falling back to full list"
         )
         return list(CURRENCY_CHOICES)
+
     return available
 
 
@@ -263,10 +308,16 @@ class MempoolFlowHandler(ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             base_url = user_input[CONF_BASE_URL].strip().rstrip("/")
             update_interval = user_input.get(
-                CONF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL
+                CONF_UPDATE_INTERVAL,
+                DEFAULT_UPDATE_INTERVAL,
             )
-            verify_ssl = user_input.get(CONF_VERIFY_SSL, DEFAULT_VERIFY_SSL)
-            ca_cert = (user_input.get(CONF_CA_CERT) or "").strip()
+            verify_ssl = user_input.get(
+                CONF_VERIFY_SSL,
+                DEFAULT_VERIFY_SSL,
+            )
+            ca_cert = (
+                user_input.get(CONF_CA_CERT) or ""
+            ).strip()
 
             parsed = urlparse(base_url)
 
@@ -279,21 +330,30 @@ class MempoolFlowHandler(ConfigFlow, domain=DOMAIN):
 
                 try:
                     client = await _async_client_from_input(
-                        self.hass, base_url, verify_ssl, ca_cert
+                        self.hass,
+                        base_url,
+                        verify_ssl,
+                        ca_cert,
                     )
                     await client.async_get_backend_info()
+
                     self._available_currencies = (
                         await _async_fetch_available_currencies(client)
                     )
+
                 except MempoolApiConnectionError:
                     errors["base"] = "cannot_connect"
+
                 except MempoolApiError as err:
                     if "Invalid CA certificate" in str(err):
                         errors[CONF_CA_CERT] = "invalid_ca_cert"
                     else:
                         errors["base"] = "cannot_connect"
+
                 except Exception:
-                    LOGGER.exception("Unexpected error during config flow")
+                    LOGGER.exception(
+                        "Unexpected error during config flow"
+                    )
                     errors["base"] = "unknown"
 
                 if not errors:
@@ -301,6 +361,7 @@ class MempoolFlowHandler(ConfigFlow, domain=DOMAIN):
                     self._update_interval = update_interval
                     self._verify_ssl = verify_ssl
                     self._ca_cert = ca_cert
+
                     return await self.async_step_currencies()
 
         return self.async_show_form(
@@ -321,9 +382,13 @@ class MempoolFlowHandler(ConfigFlow, domain=DOMAIN):
                 user_input.get(CONF_CURRENCIES, []),
                 available=available,
             )
-            # Empty list is allowed → only the built-in USD BTC price sensor
 
-            hostname = urlparse(self._base_url).hostname or self._base_url
+            # Empty list is allowed → only the built-in USD BTC price sensor
+            hostname = (
+                urlparse(self._base_url).hostname
+                or self._base_url
+            )
+
             return self.async_create_entry(
                 title=hostname,
                 data={
@@ -338,7 +403,10 @@ class MempoolFlowHandler(ConfigFlow, domain=DOMAIN):
 
         return self.async_show_form(
             step_id="currencies",
-            data_schema=_currency_schema(None, available),
+            data_schema=_currency_schema(
+                None,
+                available,
+            ),
         )
 
     @staticmethod
@@ -355,7 +423,9 @@ class MempoolOptionsFlowHandler(OptionsFlow):
 
     def __init__(self) -> None:
         """Initialize options flow."""
-        self._available_currencies: list[str] = list(CURRENCY_CHOICES)
+        self._available_currencies: list[str] = list(
+            CURRENCY_CHOICES
+        )
 
     async def async_step_init(
         self,
@@ -378,15 +448,25 @@ class MempoolOptionsFlowHandler(OptionsFlow):
     ) -> ConfigFlowResult:
         """Edit URL, interval, SSL and optional CA."""
         errors: dict[str, str] = {}
-        current = {**self.config_entry.data, **self.config_entry.options}
+        current = {
+            **self.config_entry.data,
+            **self.config_entry.options,
+        }
 
         if user_input is not None:
             base_url = user_input[CONF_BASE_URL].strip().rstrip("/")
             update_interval = user_input.get(
-                CONF_UPDATE_INTERVAL, DEFAULT_UPDATE_INTERVAL
+                CONF_UPDATE_INTERVAL,
+                DEFAULT_UPDATE_INTERVAL,
             )
-            verify_ssl = user_input.get(CONF_VERIFY_SSL, DEFAULT_VERIFY_SSL)
-            ca_cert = (user_input.get(CONF_CA_CERT) or "").strip()
+            verify_ssl = user_input.get(
+                CONF_VERIFY_SSL,
+                DEFAULT_VERIFY_SSL,
+            )
+            ca_cert = (
+                user_input.get(CONF_CA_CERT) or ""
+            ).strip()
+
             parsed = urlparse(base_url)
 
             if parsed.scheme not in ("http", "https") or not parsed.hostname:
@@ -394,25 +474,42 @@ class MempoolOptionsFlowHandler(OptionsFlow):
             else:
                 try:
                     client = await _async_client_from_input(
-                        self.hass, base_url, verify_ssl, ca_cert
+                        self.hass,
+                        base_url,
+                        verify_ssl,
+                        ca_cert,
                     )
                     await client.async_get_backend_info()
+
                 except MempoolApiConnectionError:
                     errors["base"] = "cannot_connect"
+
                 except MempoolApiError as err:
                     if "Invalid CA certificate" in str(err):
                         errors[CONF_CA_CERT] = "invalid_ca_cert"
                     else:
                         errors["base"] = "cannot_connect"
+
                 except Exception:
-                    LOGGER.exception("Unexpected error during options flow")
+                    LOGGER.exception(
+                        "Unexpected error during options flow"
+                    )
                     errors["base"] = "unknown"
 
                 if not errors:
                     currencies = _normalize_currencies(
-                        current.get(CONF_CURRENCIES, DEFAULT_CURRENCIES)
+                        current.get(
+                            CONF_CURRENCIES,
+                            DEFAULT_CURRENCIES,
+                        )
                     )
-                    addresses = list(current.get(CONF_ADDRESSES, []))
+                    addresses = list(
+                        current.get(
+                            CONF_ADDRESSES,
+                            [],
+                        )
+                    )
+
                     new_data = {
                         **current,
                         CONF_BASE_URL: base_url,
@@ -422,15 +519,21 @@ class MempoolOptionsFlowHandler(OptionsFlow):
                         CONF_CURRENCIES: currencies,
                         CONF_ADDRESSES: addresses,
                     }
+
                     self.hass.config_entries.async_update_entry(
                         self.config_entry,
                         data=new_data,
                         title=parsed.hostname or base_url,
                     )
+
                     await self.hass.config_entries.async_reload(
                         self.config_entry.entry_id
                     )
-                    return self.async_create_entry(title="", data={})
+
+                    return self.async_create_entry(
+                        title="",
+                        data={},
+                    )
 
         return self.async_show_form(
             step_id="settings",
@@ -443,9 +546,16 @@ class MempoolOptionsFlowHandler(OptionsFlow):
         user_input: dict[str, Any] | None = None,
     ) -> ConfigFlowResult:
         """Edit enabled currencies (only rates the instance provides)."""
-        current = {**self.config_entry.data, **self.config_entry.options}
+        current = {
+            **self.config_entry.data,
+            **self.config_entry.options,
+        }
+
         current_currencies = _normalize_currencies(
-            current.get(CONF_CURRENCIES, DEFAULT_CURRENCIES)
+            current.get(
+                CONF_CURRENCIES,
+                DEFAULT_CURRENCIES,
+            )
         )
 
         # Fetch live price list when opening the step
@@ -454,40 +564,75 @@ class MempoolOptionsFlowHandler(OptionsFlow):
                 client = await _async_client_from_input(
                     self.hass,
                     current[CONF_BASE_URL],
-                    current.get(CONF_VERIFY_SSL, DEFAULT_VERIFY_SSL),
-                    current.get(CONF_CA_CERT) or None,
+                    current.get(
+                        CONF_VERIFY_SSL,
+                        DEFAULT_VERIFY_SSL,
+                    ),
+                    current.get(
+                        CONF_CA_CERT
+                    ) or None,
                 )
+
                 self._available_currencies = (
                     await _async_fetch_available_currencies(client)
                 )
+
             except Exception:
-                LOGGER.exception("Failed to refresh available currencies")
-                self._available_currencies = list(CURRENCY_CHOICES)
+                LOGGER.exception(
+                    "Failed to refresh available currencies"
+                )
+                self._available_currencies = list(
+                    CURRENCY_CHOICES
+                )
 
         available = self._available_currencies
 
         if user_input is not None:
             currencies = _normalize_currencies(
-                user_input.get(CONF_CURRENCIES, []),
+                user_input.get(
+                    CONF_CURRENCIES,
+                    [],
+                ),
                 available=available,
             )
+
             # Empty list is allowed → only the built-in USD BTC price sensor
-
-            removed = set(current_currencies) - set(currencies)
-            _remove_currency_entities(self.hass, self.config_entry, removed)
-
-            new_data = {**current, CONF_CURRENCIES: currencies}
-            self.hass.config_entries.async_update_entry(
-                self.config_entry, data=new_data
+            removed = (
+                set(current_currencies)
+                - set(currencies)
             )
+
+            _remove_currency_entities(
+                self.hass,
+                self.config_entry,
+                removed,
+            )
+
+            new_data = {
+                **current,
+                CONF_CURRENCIES: currencies,
+            }
+
+            self.hass.config_entries.async_update_entry(
+                self.config_entry,
+                data=new_data,
+            )
+
             await self.hass.config_entries.async_reload(
                 self.config_entry.entry_id
             )
-            return self.async_create_entry(title="", data={})
+
+            return self.async_create_entry(
+                title="",
+                data={},
+            )
 
         return self.async_show_form(
             step_id="currencies",
-            data_schema=_currency_schema(current_currencies, available),
+            data_schema=_currency_schema(
+                current_currencies,
+                available,
+            ),
         )
 
     async def async_step_add_address(
@@ -496,9 +641,17 @@ class MempoolOptionsFlowHandler(OptionsFlow):
     ) -> ConfigFlowResult:
         """Add a named BTC address."""
         errors: dict[str, str] = {}
-        current = {**self.config_entry.data, **self.config_entry.options}
+
+        current = {
+            **self.config_entry.data,
+            **self.config_entry.options,
+        }
+
         addresses: list[dict[str, str]] = list(
-            current.get(CONF_ADDRESSES, [])
+            current.get(
+                CONF_ADDRESSES,
+                [],
+            )
         )
 
         if user_input is not None:
@@ -507,35 +660,67 @@ class MempoolOptionsFlowHandler(OptionsFlow):
 
             if not name:
                 errors["name"] = "invalid_name"
+
             elif not address:
                 errors["address"] = "invalid_address"
-            elif any(item.get("address") == address for item in addresses):
+
+            elif any(
+                item.get("address") == address
+                for item in addresses
+            ):
                 errors["address"] = "address_exists"
+
             else:
                 try:
                     client = await _async_client_from_input(
                         self.hass,
                         current[CONF_BASE_URL],
-                        current.get(CONF_VERIFY_SSL, DEFAULT_VERIFY_SSL),
-                        current.get(CONF_CA_CERT) or None,
+                        current.get(
+                            CONF_VERIFY_SSL,
+                            DEFAULT_VERIFY_SSL,
+                        ),
+                        current.get(
+                            CONF_CA_CERT
+                        ) or None,
                     )
+
                     await client.async_get_address(address)
+
                 except MempoolApiError:
                     errors["address"] = "invalid_address"
+
                 except Exception:
-                    LOGGER.exception("Error validating address")
+                    LOGGER.exception(
+                        "Error validating address"
+                    )
                     errors["address"] = "invalid_address"
 
                 if not errors:
-                    addresses.append({"name": name, "address": address})
-                    new_data = {**current, CONF_ADDRESSES: addresses}
-                    self.hass.config_entries.async_update_entry(
-                        self.config_entry, data=new_data
+                    addresses.append(
+                        {
+                            "name": name,
+                            "address": address,
+                        }
                     )
+
+                    new_data = {
+                        **current,
+                        CONF_ADDRESSES: addresses,
+                    }
+
+                    self.hass.config_entries.async_update_entry(
+                        self.config_entry,
+                        data=new_data,
+                    )
+
                     await self.hass.config_entries.async_reload(
                         self.config_entry.entry_id
                     )
-                    return self.async_create_entry(title="", data={})
+
+                    return self.async_create_entry(
+                        title="",
+                        data={},
+                    )
 
         return self.async_show_form(
             step_id="add_address",
@@ -553,13 +738,22 @@ class MempoolOptionsFlowHandler(OptionsFlow):
         user_input: dict[str, Any] | None = None,
     ) -> ConfigFlowResult:
         """Remove a previously added BTC address."""
-        current = {**self.config_entry.data, **self.config_entry.options}
+        current = {
+            **self.config_entry.data,
+            **self.config_entry.options,
+        }
+
         addresses: list[dict[str, str]] = list(
-            current.get(CONF_ADDRESSES, [])
+            current.get(
+                CONF_ADDRESSES,
+                [],
+            )
         )
 
         if not addresses:
-            return self.async_abort(reason="no_addresses")
+            return self.async_abort(
+                reason="no_addresses"
+            )
 
         choices = {
             item["address"]: (
@@ -571,17 +765,40 @@ class MempoolOptionsFlowHandler(OptionsFlow):
 
         if user_input is not None:
             to_remove = user_input["address"]
-            addresses = [
-                item for item in addresses if item["address"] != to_remove
-            ]
-            new_data = {**current, CONF_ADDRESSES: addresses}
-            self.hass.config_entries.async_update_entry(
-                self.config_entry, data=new_data
+
+            # Remove the corresponding Home Assistant entity
+            # from the entity registry before removing the address
+            # from the integration configuration.
+            _remove_address_entity(
+                self.hass,
+                self.config_entry,
+                to_remove,
             )
+
+            addresses = [
+                item
+                for item in addresses
+                if item["address"] != to_remove
+            ]
+
+            new_data = {
+                **current,
+                CONF_ADDRESSES: addresses,
+            }
+
+            self.hass.config_entries.async_update_entry(
+                self.config_entry,
+                data=new_data,
+            )
+
             await self.hass.config_entries.async_reload(
                 self.config_entry.entry_id
             )
-            return self.async_create_entry(title="", data={})
+
+            return self.async_create_entry(
+                title="",
+                data={},
+            )
 
         return self.async_show_form(
             step_id="remove_address",
@@ -590,7 +807,10 @@ class MempoolOptionsFlowHandler(OptionsFlow):
                     vol.Required("address"): SelectSelector(
                         SelectSelectorConfig(
                             options=[
-                                SelectOptionDict(value=a, label=l)
+                                SelectOptionDict(
+                                    value=a,
+                                    label=l,
+                                )
                                 for a, l in choices.items()
                             ],
                             mode="dropdown",
