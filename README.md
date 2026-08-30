@@ -16,7 +16,7 @@ Home Assistant Integration
 
 🇬🇧 **English** · 🇩🇪 [Deutsch](README_DE.md)
 
-**Current version: 0.5.9**
+**Current version: 0.5.9.1**
 
 ---
 
@@ -61,6 +61,9 @@ Home Assistant Integration
 | **Network hashrate** | Estimated network hashrate | 872.60 EH/s |
 | **Total miners reward (144 blocks)** | Total miner rewards (last 144 blocks) | 453.0743 BTC |
 
+<img width="263" height="798" alt="senst" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
+
+
 ### Optional (disabled by default)
 
 Enable them in the entity registry if required:
@@ -88,6 +91,9 @@ Supported (depending on the response from your Mempool instance at `/api/v1/pric
 
 With API key:  
 `CNY` `INR` `BRL` `KRW` `TRY` `PLN` `SEK` `NOK` `DKK` `CZK` `HUF` `ILS` `MXN` `SGD` `HKD` `NZD` `ZAR` `RUB` `THB` `TWD` `PHP` `IDR` `MYR` `VND`
+
+<img width="893" height="606" alt="w" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
+
 
 ---
 
@@ -117,7 +123,8 @@ INFO here:
 
 ## No separate installation is required because the card is already included in Mempool Watch!
 
-<img width="485" height="310" alt="btc-address-card" src="https://github.com/user-attachments/assets/ff4caa01-b19b-418c-9c71-8f789c671f44" />
+<img width="1146" height="656" alt="Unbenannt1" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
+<img width="1037" height="746" alt="Unbenannt" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
 
 ---
 
@@ -145,6 +152,9 @@ UI only — no YAML.
 **Setup:** Instance URL, update interval (5–600 s, default 60), SSL verification, optional CA certificate (PEM), and fiat currencies.
 
 **Later in the options:** Settings, currencies, and addresses can be added or removed.
+
+<img width="897" height="543" alt="Unbenanntx" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
+
 
 ---
 
