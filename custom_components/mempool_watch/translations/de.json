@@ -24,7 +24,7 @@
           "currencies": "Währungen"
         },
         "data_description": {
-          "currencies": "Wähle eine oder mehrere Währungen aus."
+          "currencies": "Wähle eine oder mehrere Währungen aus.\n\nHinweis: Für zusätzliche Fiat-Währungen wird ein API-Key benötigt. Dieser muss in deiner Mempool-Instanz unter FIAT_PRICE → API_KEY hinterlegt werden."
         }
       }
     },
@@ -79,7 +79,7 @@
           "currencies": "Währungen"
         },
         "data_description": {
-          "currencies": "Wähle eine oder mehrere Währungen aus."
+          "currencies": "Wähle eine oder mehrere Währungen aus.\n\nHinweis: Für zusätzliche Fiat-Währungen wird ein API-Key benötigt. Dieser muss in deiner Mempool-Instanz unter FIAT_PRICE → API_KEY hinterlegt werden."
         }
       },
       "add_address": {
