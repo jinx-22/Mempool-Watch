@@ -13,7 +13,7 @@
         "data_description": {
           "base_url": "URL+PORT der Mempool-Instanz (z. B. https://mempool.dein-server.local)",
           "update_interval": "Wie oft abgefragt wird (5–600 s). Standard: 60 s.",
-          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen (z. B. mempool.space) leer lassen.",
+          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen oder http-Verbindungen leer lassen.",
           "ca_cert": "Vollständiger PEM-Text inkl. -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
@@ -68,7 +68,7 @@
         "data_description": {
           "base_url": "URL der Mempool-Instanz (lokal oder öffentlich).",
           "update_interval": "Wie oft abgefragt wird (5–600 s).",
-          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen (z. B. mempool.space) leer lassen.",
+          "verify_ssl": "Für sichere Verbindungen aktiviert lassen.\n\nStart9: In StartOS unter System → Root CA das Zertifikat herunterladen, die .crt-Datei im Texteditor öffnen und den gesamten Inhalt in das Feld darunter einfügen. Bei öffentlichen Instanzen oder http-Verbindungen leer lassen.",
           "ca_cert": "Vollständiger PEM-Text inkl. -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
@@ -96,7 +96,7 @@
       },
       "remove_address": {
         "title": "BTC-Adresse entfernen",
-        "description": "Adresse wählen, die entfernt werden soll.",
+        "description": "Adresse wählen, die entfernt werden soll.\n\nDie zugehörige Home-Assistant-Entität wird dabei ebenfalls dauerhaft aus dem Entity Registry entfernt. Historische Zustände und Statistiken dieser Entität können danach nicht mehr über diese Entität verwendet werden.",
         "data": {
           "address": "Adresse"
         }
