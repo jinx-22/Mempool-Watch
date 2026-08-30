@@ -13,7 +13,7 @@
         "data_description": {
           "base_url": "URL and port of the mempool instance (local or public)",
           "update_interval": "How often to poll (5–600 s). Default 60 s.",
-          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances.",
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances or http-connections.",
           "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
@@ -68,7 +68,7 @@
         "data_description": {
           "base_url": "URL of the mempool instance (local or public).",
           "update_interval": "How often to poll (5–600 s).",
-          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances.",
+          "verify_ssl": "Keep enabled for secure connections.\n\nStart9: Download the Root CA in StartOS (System → Root CA), open the .crt file in a text editor and paste the full content into the field below. Leave empty for public instances or http-connections.",
           "ca_cert": "Full PEM text including -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----."
         }
       },
@@ -96,7 +96,7 @@
       },
       "remove_address": {
         "title": "Remove BTC address",
-        "description": "Select an address sensor to remove.",
+        "description": "Select an address sensor to remove.\n\nThe associated Home Assistant entity will also be permanently removed from the entity registry. Historical states and statistics of this entity can no longer be used through this entity.",
         "data": {
           "address": "Address"
         }
