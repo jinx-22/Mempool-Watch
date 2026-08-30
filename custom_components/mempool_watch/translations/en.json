@@ -24,7 +24,7 @@
           "currencies": "Currencies"
         },
         "data_description": {
-          "currencies": "Select one or more currencies."
+          "currencies": "Select one or more currencies.\n\nNote: An API key is required for additional fiat currencies. The key must be configured in your mempool instance under FIAT_PRICE → API_KEY."
         }
       }
     },
@@ -79,7 +79,7 @@
           "currencies": "Currencies"
         },
         "data_description": {
-          "currencies": "Select one or more currencies."
+          "currencies": "Select one or more currencies.\n\nNote: An API key is required for additional fiat currencies. The key must be configured in your mempool instance under FIAT_PRICE → API_KEY."
         }
       },
       "add_address": {
