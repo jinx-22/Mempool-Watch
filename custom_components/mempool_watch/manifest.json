@@ -11,5 +11,5 @@
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/jinx-22/mempool_watch/issues",
   "requirements": [],
-  "version": "0.5.9"
+  "version": "0.5.9.1"
 }
