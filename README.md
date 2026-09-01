@@ -61,7 +61,7 @@ Home Assistant Integration
 | **Network Hashrate** | Estimated network hashrate | 872.60 EH/s |
 | **Total Miner Rewards (144 Blocks)** | Total miner rewards over the last 144 blocks | 453.0743 BTC |
 
-<img width="260" alt="sensors" src="https://github.com/user-attachments/assets/30fb3d5c-c1a2-46ad-a84e-da43aad38fa3" />
+<img width="20%" alt="sensors" src="https://github.com/user-attachments/assets/30fb3d5c-c1a2-46ad-a84e-da43aad38fa3" />
 
 ### Optional (disabled by default)
 
@@ -95,7 +95,7 @@ With API key:
 
 > **Note:** An API key is required for additional fiat currencies. The API key must be configured in your Mempool instance under `FIAT_PRICE → API_KEY`.
 
-<img width="700" alt="Currencies" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
+<img width="80%" alt="Currencies" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
 
 ---
 
@@ -125,8 +125,8 @@ INFO here:
 
 ## No separate installation required — the Card is already included with Mempool Watch!
 
-<img width="700" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
-<img width="700" alt="BTC Address Card Configuration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
+<img width="80%" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
+<img width="80%" alt="BTC Address Card Configuration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
 
 ---
 
@@ -155,7 +155,7 @@ Copy the `mempool_watch` folder to `/config/custom_components/`, restart Home As
 
 **Later in Options:** Settings, currencies, and Bitcoin addresses can be added or removed at any time.
 
-<img width="700" alt="Configuration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
+<img width="80%" alt="Configuration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
 
 ---
 
@@ -177,7 +177,7 @@ Please provide the following information:
 <p align="center">
 ⚡ <b>Address:</b><br><br>
 <code>usefulplay52@walletofsatoshi.com</code><br><br>
-<img width="320" alt="Wallet of Satoshi" src="https://github.com/user-attachments/assets/65cc18d9-05d1-4a00-8ccc-9922fdb54baf" />
+<img width="280" alt="Wallet of Satoshi" src="https://github.com/user-attachments/assets/65cc18d9-05d1-4a00-8ccc-9922fdb54baf" />
 </p>
 
 ## Bitcoin
@@ -185,7 +185,7 @@ Please provide the following information:
 <div align="center">
 <img src="https://github.com/user-attachments/assets/f74cad36-8c05-4a33-89cd-b998075af33b" /><br><br>
 <code>bc1qkz7mtp23cmshxnru96lzgeayu0urlysvqk5vry</code><br><br>
-<img alt="Bitcoin Donations" src="https://github.com/user-attachments/assets/196f68e4-b0e8-4f27-bded-8c4fe13b9d45" />
+<img width="220" alt="Bitcoin Donations" src="https://github.com/user-attachments/assets/196f68e4-b0e8-4f27-bded-8c4fe13b9d45" />
 </div>
 
 Thank you for your support — even a free ⭐ helps others discover the project:
