@@ -16,7 +16,7 @@ Home Assistant Integration
 
 🇬🇧 **English** · 🇩🇪 [**Deutsch**](README_DE.md)
 
-**Current version: v0.5.9.2**
+**Current version: v0.5.9.3**
 
 ---
 
