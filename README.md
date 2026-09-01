@@ -61,7 +61,7 @@ Home Assistant Integration
 | **Network Hashrate** | Estimated network hashrate | 872.60 EH/s |
 | **Total Miner Rewards (144 Blocks)** | Total miner rewards over the last 144 blocks | 453.0743 BTC |
 
-<img width="263" height="798" alt="Sensors" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
+<img width="263" alt="Sensors" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
 
 ### Optional (disabled by default)
 
@@ -95,7 +95,7 @@ With API key:
 
 > **Note:** An API key is required for additional fiat currencies. The API key must be configured in your Mempool instance under `FIAT_PRICE → API_KEY`.
 
-<img width="893" height="606" alt="Currencies" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
+<img width="700" alt="Currencies" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
 
 ---
 
@@ -125,8 +125,8 @@ INFO here:
 
 ## No separate installation required — the Card is already included with Mempool Watch!
 
-<img width="1146" height="656" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
-<img width="1037" height="746" alt="BTC Address Card Configuration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
+<img width="700" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
+<img width="700" alt="BTC Address Card Configuration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
 
 ---
 
@@ -155,7 +155,7 @@ Copy the `mempool_watch` folder to `/config/custom_components/`, restart Home As
 
 **Later in Options:** Settings, currencies, and Bitcoin addresses can be added or removed at any time.
 
-<img width="897" height="543" alt="Configuration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
+<img width="700" alt="Configuration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
 
 ---
 
