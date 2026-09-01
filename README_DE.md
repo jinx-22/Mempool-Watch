@@ -61,7 +61,7 @@ Home Assistant Integration
 | **Netzwerk-Hashrate** | Geschätzte Netzwerk-Hashrate | 872.60 EH/s |
 | **Gesamte Miner-Belohnung (144 Blöcke)** | Gesamte Miner-Belohnungen der letzten 144 Blöcke | 453.0743 BTC |
 
-<img width="263" alt="Sensoren" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
+<img width="260" alt="sensors" src="https://github.com/user-attachments/assets/30fb3d5c-c1a2-46ad-a84e-da43aad38fa3" />
 
 ### Optional (standardmäßig deaktiviert)
 
