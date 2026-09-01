@@ -113,9 +113,9 @@ class MempoolApiClient:
         """Connection-test endpoint."""
         return await self._get("/api/v1/backend-info")
 
-    async def async_get_fees_recommended(self) -> dict[str, Any]:
-        """Recommended fees."""
-        return await self._get("/api/v1/fees/recommended")
+    async def async_get_fees_precise(self) -> dict[str, Any]:
+        """Precise fees."""
+        return await self._get("/api/v1/fees/precise")
 
     async def async_get_mempool(self) -> dict[str, Any]:
         """Mempool statistics."""
