@@ -61,7 +61,7 @@ Home Assistant Integration
 | **Netzwerk-Hashrate** | Geschätzte Netzwerk-Hashrate | 872.60 EH/s |
 | **Gesamte Miner-Belohnung (144 Blöcke)** | Gesamte Miner-Belohnungen der letzten 144 Blöcke | 453.0743 BTC |
 
-<img width="263" height="798" alt="Sensoren" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
+<img width="263" alt="Sensoren" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
 
 ### Optional (standardmäßig deaktiviert)
 
@@ -95,7 +95,7 @@ Mit API-Key:
 
 > **Hinweis:** Für zusätzliche Fiat-Währungen wird ein API-Key benötigt. Dieser muss in deiner Mempool-Instanz unter `FIAT_PRICE → API_KEY` hinterlegt werden.
 
-<img width="893" height="606" alt="Währungen" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
+<img width="700" alt="Währungen" src="https://github.com/user-attachments/assets/0f9acf0e-ef61-480c-b25b-17bd104c2785" />
 
 ---
 
@@ -125,8 +125,8 @@ INFO hier:
 
 ## Keine separate Installation erforderlich, da die Card bereits in Mempool Watch enthalten ist!
 
-<img width="1146" height="656" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
-<img width="1037" height="746" alt="BTC Address Card Konfiguration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
+<img width="700" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
+<img width="700" alt="BTC Address Card Konfiguration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
 
 ---
 
@@ -155,7 +155,7 @@ Den Ordner `mempool_watch` nach `/config/custom_components/` kopieren, Home Assi
 
 **Später in den Optionen:** Einstellungen, Währungen und Bitcoin-Adressen können jederzeit hinzugefügt oder entfernt werden.
 
-<img width="897" height="543" alt="Konfiguration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
+<img width="700" alt="Konfiguration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
 
 ---
 
