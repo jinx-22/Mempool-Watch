@@ -154,7 +154,7 @@ class MempoolDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         """Fetch network endpoints and configured address balances."""
 
         endpoints: dict[str, Callable[[], Awaitable[Any]]] = {
-            "fees": self.client.async_get_fees_recommended,
+            "fees": self.client.async_get_fees_precise,
             "mempool": self.client.async_get_mempool,
             "tip_hash": self.client.async_get_tip_hash,
             "difficulty": self.client.async_get_difficulty_adjustment,
