@@ -61,7 +61,7 @@ Home Assistant Integration
 | **Network Hashrate** | Estimated network hashrate | 872.60 EH/s |
 | **Total Miner Rewards (144 Blocks)** | Total miner rewards over the last 144 blocks | 453.0743 BTC |
 
-<img width="263" alt="Sensors" src="https://github.com/user-attachments/assets/e958a33c-0d03-4ba6-8474-54c570547850" />
+<img width="260" alt="sensors" src="https://github.com/user-attachments/assets/30fb3d5c-c1a2-46ad-a84e-da43aad38fa3" />
 
 ### Optional (disabled by default)
 
