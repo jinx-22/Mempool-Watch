@@ -36,6 +36,38 @@ Home Assistant Integration
 
 ---
 
+# 📦 Installation
+
+## Einfache Installation → [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jinx-22&repository=mempool_watch&category=integration)
+
+
+## HACS
+
+1. **HACS** → **Integrationen** → **Benutzerdefinierte Repositories**
+2. `https://github.com/jinx-22/mempool_watch` hinzufügen (Kategorie: **Integration**)
+3. **Mempool Watch** installieren → Home Assistant neu starten
+4. **Einstellungen → Geräte & Dienste → Integration hinzufügen → Mempool Watch**
+
+
+
+## Manuell
+
+Den Ordner `mempool_watch` nach `/config/custom_components/` kopieren, Home Assistant neu starten und die Integration anschließend über die Benutzeroberfläche hinzufügen.
+
+---
+
+# ⚙️ Konfiguration
+
+**Nur über die Benutzeroberfläche — kein YAML erforderlich.**
+
+**Einrichtung:** Instanz-URL, Aktualisierungsintervall (5–600 s, Standard 60 s), SSL-Zertifikatsprüfung, optionales CA-Zertifikat (PEM) und Fiat-Währungen.
+
+**Später in den Optionen:** Einstellungen, Währungen und Bitcoin-Adressen können jederzeit hinzugefügt oder entfernt werden.
+
+<img width="80%" alt="Konfiguration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
+
+---
+
 # 📊 Sensoren
 
 ### Core (standardmäßig aktiviert)
@@ -127,38 +159,6 @@ INFO hier:
 
 <img width="80%" alt="BTC Address Card" src="https://github.com/user-attachments/assets/29846f5d-aa18-420e-b41b-534fd14aac06" />
 <img width="80%" alt="BTC Address Card Konfiguration" src="https://github.com/user-attachments/assets/6a506418-7be7-457f-8bca-f5a6dafb28c3" />
-
----
-
-# 📦 Installation
-
-## Einfache Installation → [![Open in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jinx-22&repository=mempool_watch&category=integration)
-
-
-## HACS
-
-1. **HACS** → **Integrationen** → **Benutzerdefinierte Repositories**
-2. `https://github.com/jinx-22/mempool_watch` hinzufügen (Kategorie: **Integration**)
-3. **Mempool Watch** installieren → Home Assistant neu starten
-4. **Einstellungen → Geräte & Dienste → Integration hinzufügen → Mempool Watch**
-
-
-
-## Manuell
-
-Den Ordner `mempool_watch` nach `/config/custom_components/` kopieren, Home Assistant neu starten und die Integration anschließend über die Benutzeroberfläche hinzufügen.
-
----
-
-# ⚙️ Konfiguration
-
-**Nur über die Benutzeroberfläche — kein YAML erforderlich.**
-
-**Einrichtung:** Instanz-URL, Aktualisierungsintervall (5–600 s, Standard 60 s), SSL-Zertifikatsprüfung, optionales CA-Zertifikat (PEM) und Fiat-Währungen.
-
-**Später in den Optionen:** Einstellungen, Währungen und Bitcoin-Adressen können jederzeit hinzugefügt oder entfernt werden.
-
-<img width="80%" alt="Konfiguration" src="https://github.com/user-attachments/assets/2d721a9a-afa3-4a25-8465-e7c8e5cf1c7c" />
 
 ---
 
