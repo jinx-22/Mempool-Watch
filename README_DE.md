@@ -22,7 +22,7 @@ Home Assistant Integration
 
 ## 📖 Über Mempool Watch
 
-**Mempool Watch** ist eine benutzerdefinierte Home-Assistant-Integration zur Überwachung des Bitcoin-Netzwerks über deine lokale Mempool-Instanz oder [mempool.space](https://mempool.space/).
+**Mempool Watch** ist eine benutzerdefinierte Home-Assistant-Integration zur Überwachung des Bitcoin-Netzwerks über deine **lokale Mempool-Instanz** oder mempool.space.
 
 > **Datenschutz:** Gib bei der Verwendung einer öffentlichen Mempool-Instanz keine BTC-Adressen ein.
 
